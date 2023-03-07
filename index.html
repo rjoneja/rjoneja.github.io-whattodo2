@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Avani Activity Generator</title>
+    <style>
+      html, body {
+        height: 100%;
+        margin: 0;
+      }
+      #title {
+        font-size: 4vh;
+        text-align: left;
+        margin-top: 3%;
+        margin-left: 3%;
+        font-family: Futura, Helvetica Neue, sans-serif;
+      }
+      #result {
+        font-size: 20vh;
+        text-align: center;
+        margin-top: 20vh;
+        text-transform: uppercase;
+        font-family: Futura, Helvetica Neue, sans-serif;
+      }
+      #btn-generate {
+        font-size: 4vh;
+        padding: 20px;
+        border-radius: 10px;
+        border: none;
+        background-color: #f9a825;
+        color: white;
+        text-align: center;
+        position: fixed;
+        bottom: 0;
+        width: 100%;
+        box-sizing: border-box;
+        cursor: pointer;
+        transition: background-color 0.5s;
+      }
+      #btn-generate:hover {
+        background-color: #ef6c00;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="title">Avani<br>Activity<br>Generator</div>
+    <div id="result"></div>
+    <button id="btn-generate">WHAT SHALL WE DO TODAY?</button>
+
+    <script>
+      const activities = [
+  {
+    name: "Horniman Museum",
+    color: "red",
+    mapsQuery: "Horniman+Museum",
+  },
+  {
+    name: "Maritime Museum",
+    color: "blue",
+    mapsQuery: "Maritime+Museum",
+  },
+  {
+    name: "Burgess Park",
+    color: "green",
+    mapsQuery: "Burgess+Park",
+  },
+  {
+    name: "London Zoo",
+    color: "orange",
+    mapsQuery: "London+Zoo",
+  },
+  {
+    name: "Wavelengths Pool",
+    color: "purple",
+    mapsQuery: "Wavelengths+Pool",
+  },
+  {
+    name: "Softplay Surrey Quays",
+    color: "pink",
+    mapsQuery: "Softplay+SurreyQuays",
+  },
+  {
+    name: "Mudchute Farm",
+    color: "brown",
+    mapsQuery: "Mudchute+Farm",
+  },
+  {
+    name: "Science Museum",
+    color: "teal",
+    mapsQuery: "Science+Museum+London",
+  },
+  {
+    name: "Albany Theatre",
+    color: "indigo",
+    mapsQuery: "Albany+Theatre+Deptford",
+  },
+];
+
+      const btnGenerate = document.getElementById("btn-generate");
+      const result = document.getElementById("result");
+
+      btnGenerate.addEventListener("click", () => {
+        const randomIndex = Math.floor(Math.random() * activities.length);
+        const activity = activities[randomIndex];
+        result.innerHTML = activity.name;
+        document.body.style.backgroundColor = activity.color;
+      });
+      
+      result.addEventListener("click", () => {
+        const randomIndex = Math.floor(Math.random() * activities.length);
+        const activity = activities[randomIndex];
+        window.open(`https://www.google.com/maps/search/${activity.mapsQuery}`, '_blank');
+      });
+    </script>
+  </body>
+</html>
